@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-2">
+    <input
+      type="text"
+      placeholder="Search"
+      [value]="searchTerm()"
+      (input)="updateSearch($event)"
+    />
+  </div>
+  <div class="col-md-2">
+    <select [value]="minRating()" (change)="onRatingChange($event)">
+        <option value="0">All</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+  </div>
+</div>
+<br />
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Rating</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(product of filteredProducts();track product){
+    <tr>
+      <td>{{ product?.title }}</td>
+      <td>{{ product?.price }}</td>
+      <td>{{ product?.rating }}</td>
+      <td>
+        <select
+          [value]="product.quantity()"
+          (change)="onQuantityChange(product, $event)"
+        >
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </td>
+      <td>{{ product?.totalPrice() }}</td>
+    </tr>
+    } @empty{
+    <tr>
+      <td colspan="5">No Records</td>
+    </tr>
+    }
+    <tr>
+      <td colspan="4"><strong>Grand Total</strong></td>
+      <td>
+        <strong>{{ grandTotal() }}</strong>
+      </td>
+    </tr>
+  </tbody>
+</table>

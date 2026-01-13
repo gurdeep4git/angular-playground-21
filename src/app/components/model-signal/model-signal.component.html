@@ -1,0 +1,8 @@
+<span>Name: {{name()}}</span>
+
+<button type="button" (click)="name.set('Rahul')">Change</button>
+<br/>
+
+<hr/>
+Child Component
+<app-child-input [(inputText)]="name"></app-child-input>

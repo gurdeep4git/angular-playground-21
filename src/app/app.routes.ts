@@ -1,3 +1,68 @@
 import { Routes } from '@angular/router';
+import { CvaComponent } from './components/cva/cva.component';
+import { CustomComponentComponent } from './components/custom-component/custom-component.component';
+import { productsResolver } from './resolvers/products.resolver';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  {
+    path: 'cva',
+    component: CvaComponent,
+    title: 'CVA',
+  },
+  {
+    path: 'custom',
+    component: CustomComponentComponent,
+    title: 'custom',
+  },
+  {
+    path: 'ngTemplateOutlet',
+    loadComponent: () =>
+      import('./components/template-outlet/template-outlet.component').then(
+        (i) => i.TemplateOutletComponent
+      ),
+    title: 'NgTemplateOutlet',
+  },
+  {
+    path: 'child-routing',
+    loadChildren: () =>
+      import('./components/child-routing/child-routes').then(
+        (i) => i.CHILD_ROUTES
+      ),
+    title: 'Child-Routing',
+  },
+  {
+    path: 'signals-demo',
+    loadComponent: () =>
+      import('./components/signals-demo/signals-demo.component').then(
+        (i) => i.SignalsDemoComponent
+      ),
+    title: 'Signals Demo',
+    resolve: {
+      products: productsResolver,
+    },
+  },
+  {
+    path: 'signals-with-apis',
+    loadComponent: () =>
+      import(
+        './components/signals-crud-with-apis/signals-crud-with-apis.component'
+      ).then((i) => i.SignalsCrudWithApisComponent),
+    title: 'Signals With Apis',
+  },
+  {
+    path: 'model-signal',
+    loadComponent: () =>
+      import('./components/model-signal/model-signal.component').then(
+        (i) => i.ModelSignalComponent
+      ),
+    title: 'Model Signal',
+  },
+  {
+    path: 'ngrx-signal',
+    loadChildren: () =>
+      import('./components/ngrx-signal/ngx-signal.route').then(
+        (i) => i.CHILD_ROUTES
+      ),
+    title: 'NGRX Signal',
+  },
+];

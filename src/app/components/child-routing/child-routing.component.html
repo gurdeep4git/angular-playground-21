@@ -1,0 +1,16 @@
+<p>child-routing works!</p>
+<a
+  routerLink="./component-A"
+  routerLinkActive="active"
+  [routerLinkActiveOptions]="{ exact: true }"
+>
+   Component A 
+</a>
+<a
+  routerLink="./component-B"
+  routerLinkActive="active"
+  [routerLinkActiveOptions]="{ exact: true }"
+>
+  Component B
+</a>
+<router-outlet />

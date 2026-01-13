@@ -1,0 +1,5 @@
+<form [formGroup]="myForm">
+  <label>Phone</label>
+  <app-phone-cva formControlName="phoneNumber" />
+  <button type="button" (click)="onSubmit()">submit</button>
+</form>

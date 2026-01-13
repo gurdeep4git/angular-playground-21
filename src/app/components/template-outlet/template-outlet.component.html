@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-3">
+    <ng-container
+      *ngTemplateOutlet="
+        dropdownTemplate;
+        context: {
+          label: 'Select Countries',
+          dropdownName: 'countries',
+          options: countries,
+          selectedValue: selectedCountry,
+          onChange: onCountryChange
+        }
+      "
+    ></ng-container>
+  </div>
+
+  <div class="col-3">
+    <ng-container
+      *ngTemplateOutlet="
+        dropdownTemplate;
+        context: {
+          label: 'Select Student',
+          dropdownName: 'students',
+          options: students,
+          selectedValue: selectedStudent,
+          onChange: onStudentChange
+        }
+      "
+    ></ng-container>
+  </div>
+</div>
+
+<ng-template
+  #dropdownTemplate
+  let-label="label"
+  let-dropdownName="dropdownName"
+  let-options="options"
+  let-selectedValue="selectedValue"
+  let-onChange="onChange"
+>
+  <label [for]="dropdownName">{{ label }}</label>
+  <select [name]="dropdownName" [id]="dropdownName" [ngModel]="selectedValue" (ngModelChange)="onChange($event)">
+    <option [value]="''">--Select--</option>
+    @for(opt of options; track opt.label){
+    <option [value]="opt.value">{{ opt.label }}</option>
+    }
+  </select>
+</ng-template>

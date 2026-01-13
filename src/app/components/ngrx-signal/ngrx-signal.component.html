@@ -1,0 +1,18 @@
+<header class="bg-danger">
+  <a
+    class="p-3 d-inline-block"
+    routerLink="./products"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Products</a
+  >
+  <a
+    class="p-3 d-inline-block"
+    routerLink="./cart"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Cart</a
+  >
+</header>
+
+<router-outlet></router-outlet>

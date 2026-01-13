@@ -1,0 +1,22 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            @for(h of headers();track h.value){
+                <th>{{h.label}}</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for(d of mappedData(); track d){
+            <tr>
+                @for(head of headers(); track head){
+                    <td>{{d[head.value]}}</td>
+                }
+            </tr>
+        } @empty{
+            <tr>
+                <td>No Records Found. Try Some other filters</td>
+            </tr>
+        }
+    </tbody>
+</table>
