@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  ResolveFn,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from '@angular/router';
+
 import { Observable } from 'rxjs';
 
 export const productsResolver: ResolveFn<Observable<any>> = (

@@ -1,7 +1,7 @@
-import { Routes } from '@angular/router';
 import { CvaComponent } from './components/cva/cva.component';
 import { CustomComponentComponent } from './components/custom-component/custom-component.component';
 import { productsResolver } from './resolvers/products.resolver';
+import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {

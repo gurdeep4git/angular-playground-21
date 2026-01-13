@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { Product } from '../../models/product.model';
+
+
 import { ActivatedRoute } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-signals-demo',

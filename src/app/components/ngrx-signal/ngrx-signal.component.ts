@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
+
 @Component({
   selector: 'app-ngrx-signal',
   standalone: true,
@@ -9,5 +10,5 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   styleUrl: './ngrx-signal.component.scss'
 })
 export class NgrxSignalComponent {
-  
+
 }

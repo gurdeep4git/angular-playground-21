@@ -1,6 +1,6 @@
 import { ProductModel } from "../../models/product-model.model"
 
-export type ShopState {
+export type ShopState = {
     products:ProductModel[];
     cart:ProductModel[]
 }

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-template-outlet',
   standalone: true,
@@ -30,5 +31,5 @@ export class TemplateOutletComponent {
   onStudentChange(e:any){
     console.log(e)
   }
-  
+
 }
