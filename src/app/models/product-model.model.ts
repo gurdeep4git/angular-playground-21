@@ -9,4 +9,5 @@ export interface ProductModel {
   brand: string;
   availabilityStatus: string;
   minimumOrderQuantity: number;
+  quantity:number;
 }

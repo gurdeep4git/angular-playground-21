@@ -1,1 +1,20 @@
-<p>cart works!</p>
+@for(p of store.cart();track p.id){
+    @let totalPrice = p.price * p.quantity;
+    <div class="p-4 border shadow my-2">
+        <p><b>Name</b>: {{p?.title}}</p>
+        <p><b>Quantity</b>: {{p?.quantity}}</p>
+        <p><b>Price</b>: {{p?.price | currency}}</p>
+        <p><b>Total Price</b>: {{totalPrice | currency}}</p>
+        <button class="btn btn-danger" (click)="removeFromCart(p)">Remove</button>
+    </div>
+} @empty{
+    Nothing in cart. Go Shop
+}
+
+@if (store.cart().length > 0) {
+    <div class="mt-4 p-3 bg-light border-top">
+        <h3>Grand Total: {{ store.grandTotal() | currency }}</h3>
+    </div>
+}
+
+

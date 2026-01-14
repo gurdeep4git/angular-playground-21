@@ -1,1 +1,16 @@
-<p>products works!</p>
+@if(!store.isLoading()){ @for(p of store.products();track p.id){
+<div class="p-4 border shadow my-2">
+  @if(store.cartIds().has(p.id)){
+  <div class="d-flex justify-content-end">
+    <span class="badge bg-primary">In Cart</span>
+  </div>
+  }
+  <p>{{ p?.title }}</p>
+  <p>{{ p?.description }}</p>
+  <button class="btn btn-primary" [disabled]="store.cartIds().has(p.id)" (click)="onAddToCart(p)">
+    {{ store.cartIds().has(p.id) ? 'Already in Cart' : 'Add to Cart' }}
+  </button>
+</div>
+} } @else{
+<p>Loading...</p>
+}
