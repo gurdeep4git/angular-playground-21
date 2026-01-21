@@ -9,12 +9,8 @@ import { ProductModel } from '../../../models/product-model.model';
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent{
   store = inject(shopStore);
-
-  ngOnInit(): void {
-    this.store.loadProduct()
-  }
 
   onAddToCart(p:ProductModel):void{
     this.store.addToCart(p)

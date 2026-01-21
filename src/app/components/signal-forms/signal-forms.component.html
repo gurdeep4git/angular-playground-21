@@ -1,0 +1,113 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col-3">First Name</div>
+    <div class="col-3">
+      <input type="text" [formField]="subscribeForm.firstName" />
+      @if (
+        subscribeForm.firstName().invalid() &&
+        subscribeForm.firstName().touched()
+      ) {
+        @for (error of subscribeForm.firstName().errors(); track error.kind) {
+          <span class="small text-danger d-block">{{ error.message }}</span>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">Last Name</div>
+    <div class="col-3">
+      <input type="text" [formField]="subscribeForm.lastName" />
+      @if (
+        subscribeForm.lastName().invalid() && subscribeForm.lastName().touched()
+      ) {
+        @for (error of subscribeForm.lastName().errors(); track error.kind) {
+          <span class="small text-danger d-block">{{ error.message }}</span>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      Email
+      @if (subscribeForm.email().required()) {
+        <sup class="text-danger">*</sup>
+      }
+    </div>
+    <div class="col-3">
+      <input type="text" [formField]="subscribeForm.email" />
+      @if (subscribeForm.email().invalid() && subscribeForm.email().touched()) {
+        @for (error of subscribeForm.email().errors(); track error.kind) {
+          <span class="small text-danger d-block">{{ error.message }}</span>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">Phone
+      @if (subscribeForm.phone().required()) {
+        <sup class="text-danger">*</sup>
+      }
+    </div>
+    <div class="col-3">
+      <input type="text" [formField]="subscribeForm.phone" />
+      @if (subscribeForm.phone().invalid() && subscribeForm.phone().touched()) {
+        @for (error of subscribeForm.phone().errors(); track error.kind) {
+          <span class="small text-danger d-block">{{ error.message }}</span>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-3">
+      <div>
+        <label>Send Via Email</label>
+        <input type="checkbox" [formField]="subscribeForm.sendViaEmail" />
+      </div>
+
+      <div>
+        <label>Send Via Phone</label>
+        <input type="checkbox" [formField]="subscribeForm.sendViaPhone" />
+      </div>
+
+      @if (subscribeForm.sendViaEmail().invalid()) {
+        @for (error of subscribeForm.sendViaEmail().errors(); track error.kind) {
+          <span class="small text-danger d-block">{{ error.message }}</span>
+        }
+      }
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-3">Years As a Fan</div>
+    <div class="col-3">
+      <input type="number" [formField]="subscribeForm.yearsAsFan" />
+      @if (
+        subscribeForm.yearsAsFan().invalid() &&
+        subscribeForm.yearsAsFan().touched()
+      ) {
+        @for (error of subscribeForm.yearsAsFan().errors(); track error.kind) {
+          <span class="small text-danger d-block">{{ error.message }}</span>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-3">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="subscribeForm().invalid()"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</form>

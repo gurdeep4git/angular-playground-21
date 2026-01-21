@@ -2,6 +2,7 @@ import {
   patchState,
   signalStore,
   withComputed,
+  withHooks,
   withMethods,
   withState,
 } from '@ngrx/signals';
@@ -80,5 +81,10 @@ export const shopStore = signalStore(
       const updatedCart = store.cart().filter((i) => i.id != product.id);
       patchState(store, { cart: updatedCart });
     }
-  }))
+  })),
+  withHooks({
+    onInit(store){
+        store.loadProduct();
+    }
+  })
 );

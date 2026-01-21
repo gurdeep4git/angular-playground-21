@@ -65,4 +65,12 @@ export const routes: Routes = [
       ),
     title: 'NGRX Signal',
   },
+  {
+    path: 'signal-forms',
+    loadComponent: () =>
+      import('./components/signal-forms/signal-forms.component').then(
+        (i) => i.SignalFormsComponent
+      ),
+    title: 'Signal Forms',
+  },
 ];

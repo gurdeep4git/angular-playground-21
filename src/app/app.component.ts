@@ -19,6 +19,7 @@ export class AppComponent {
     { label: 'Signals', href: './signals-demo' },
     { label: 'Signals With Apis CRUD', href: './signals-with-apis' },
     { label: 'model() Signal', href: './model-signal' },
-    { label: 'NGRX Signal', href: './ngrx-signal' }
+    { label: 'NGRX Signal', href: './ngrx-signal' },
+    { label: 'Signal Forms', href: './signal-forms' }
   ];
 }
