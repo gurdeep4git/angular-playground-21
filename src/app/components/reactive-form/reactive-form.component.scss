@@ -1,0 +1,18 @@
+.invalid{
+    border-color: red;
+    animation-name: shake;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+}
+
+@keyframes shake {
+  0%{
+    transform: translateX(-2px);
+  }
+  50%{
+    transform: translateX(2px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
+}

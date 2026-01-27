@@ -1,0 +1,36 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="row mb-3">
+    <div class="col-2">
+      <label>Title</label>
+    </div>
+    <div class="col-3">
+      <input
+        appInvalidField
+        type="text"
+        class="form-control"
+        formControlName="title"
+      />
+      @if (form.get("title")?.invalid && form.get("title")?.touched) {
+        <span class="small-text text-danger">This is required</span>
+      }
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-2">
+      <label>Description</label>
+    </div>
+    <div class="col-3">
+      <input appInvalidField type="text" class="form-control" formControlName="description" />
+      @if (form.get("description")?.invalid && form.get("description")?.touched) {
+        <span class="small-text text-danger">This is required</span>
+      }
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-5 d-flex justify-content-end">
+      <button type="submit" class="btn btn-primary">Add</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,42 @@
+@if(quizService.status() === quizStatus.Load){
+<div>
+    <header>
+        <h1>Welcome to quiz</h1>
+        <h3>{{quizService.totalQuestions()}} questions to test your React mastery</h3>
+    </header>
+    <button (click)="onQuizStart()">Start Quiz</button>
+</div>
+}
+
+@if(quizService.status() === quizStatus.Ready){
+    @let currentQuestion = quizService.question();
+    @let hasAnswered = quizService.answer() !== null;
+    <div>
+        <p>Questions: <b>{{quizService.index() + 1}}</b> / {{quizService.totalQuestions()}}</p>
+        <p>Score : <b>{{quizService.points()}}</b>/{{quizService.maxPoints()}}</p>
+    </div>
+    <div>
+        <h4>{{currentQuestion.question}}</h4>
+        @for(opt of currentQuestion.options; track opt; let i = $index){
+            <button class="btn btn-secondary d-block mb-2" 
+            [class.btn-success]="hasAnswered && i === currentQuestion.correctOption" 
+            [class.btn-danger]="hasAnswered && i === quizService.selectedOption() && i !== currentQuestion.correctOption" 
+            [disabled]="hasAnswered" 
+            (click)="onAnswerSelect(i)">{{opt}}</button>
+        }
+        @if(quizService.index() < quizService.totalQuestions() - 1){
+            <button (click)="onNext()">Next</button>
+        }
+        @if(quizService.index() === quizService.totalQuestions() - 1){
+            <button (click)="onFinish()">Finish</button>
+        }
+    </div>
+}
+
+@if(quizService.status() === quizStatus.Finish){
+<div>
+    <h2>Quiz Complete!</h2>
+    <p>Your Score: <b>{{quizService.points()}}</b>/{{quizService.maxPoints()}}</p>
+    <button (click)="onRestart()">Try Again</button>
+</div>
+}

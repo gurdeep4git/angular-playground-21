@@ -73,4 +73,20 @@ export const routes: Routes = [
       ),
     title: 'Signal Forms',
   },
+  {
+    path: 'reactive-forms',
+    loadComponent: () =>
+      import('./components/reactive-form/reactive-form.component').then(
+        (i) => i.ReactiveFormComponent
+      ),
+    title: 'Invalid Field Directive',
+  },
+  {
+    path: 'quiz',
+    loadComponent: () =>
+      import('./components//quiz/quiz.component').then(
+        (i) => i.QuizComponent
+      ),
+    title: 'Quiz',
+  },
 ];
