@@ -89,4 +89,12 @@ export const routes: Routes = [
       ),
     title: 'Quiz',
   },
+  {
+    path: 'recepies',
+    loadComponent: () =>
+      import('./components/recepies/recepies.component').then(
+        (i) => i.RecepiesComponent
+      ),
+    title: 'Recepies',
+  },
 ];
