@@ -23,7 +23,7 @@ export const authInterceptor: HttpInterceptorFn = (
       },
 
       // Globally set the query params globally => URL will be https://dummyjson.com/recipes/search?q=Margherita
-      params: req.params.set('q', 'Margherita'),
+      //params: req.params.set('q', 'Margherita'),
     });
     return next(modifiedReq);
   }

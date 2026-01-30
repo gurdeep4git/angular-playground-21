@@ -1,1 +1,128 @@
-<p>recepies works!</p>
+<div class="row">
+  <div class="col-4">
+    <div class="mb-2">
+      <input type="text" (input)="onSearch($event)" class="form-control" placeholder="Search..." />
+    </div>
+    <h6>Recpies ({{recepiesCount()}})</h6>
+    @for (recipe of recepies().recipes; track recipe?.id) {
+      <div
+        class="d-flex border p-1 mb-2 align-items-center justify-content-between"
+      >
+        <p class="m-0">{{ recipe?.name }}</p>
+        <button
+          class="btn btn-primary"
+          type="button"
+          (click)="fetchSingleRecpie(recipe.id)"
+        >
+          View
+        </button>
+      </div>
+    } @empty {
+      Nothing
+    }
+  </div>
+  <div class="col-8">
+    @if (selectedRecpie(); as recipe) {
+      <div>
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <button (click)="onBack()" class="btn btn-secondary mb-1">
+              Back
+            </button>
+            <div class="card shadow-sm border-0">
+              <!-- Image -->
+              <img
+                [src]="recipe.image"
+                [alt]="recipe.name"
+                class="card-img-top"
+              />
+
+              <div class="card-body">
+                <!-- Title -->
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2"
+                >
+                  <h2 class="mb-0">{{ recipe.name }}</h2>
+                  <span class="badge bg-success">{{ recipe.difficulty }}</span>
+                </div>
+
+                <p class="text-muted mb-3">
+                  {{ recipe.cuisine }} ·
+                  {{ recipe.mealType.join(", ") }}
+                </p>
+
+                <!-- Rating -->
+                <div class="mb-3">
+                  <span class="fw-semibold">⭐ {{ recipe.rating }}</span>
+                  <span class="text-muted"
+                    >({{ recipe.reviewCount }} reviews)</span
+                  >
+                </div>
+
+                <!-- Info Row -->
+                <div class="row text-center mb-4">
+                  <div class="col">
+                    <div class="fw-bold">Prep</div>
+                    <small class="text-muted"
+                      >{{ recipe.prepTimeMinutes }} min</small
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="fw-bold">Cook</div>
+                    <small class="text-muted"
+                      >{{ recipe.cookTimeMinutes }} min</small
+                    >
+                  </div>
+                  <div class="col">
+                    <div class="fw-bold">Servings</div>
+                    <small class="text-muted">{{ recipe.servings }}</small>
+                  </div>
+                  <div class="col">
+                    <div class="fw-bold">Calories</div>
+                    <small class="text-muted">{{
+                      recipe.caloriesPerServing
+                    }}</small>
+                  </div>
+                </div>
+
+                <!-- Ingredients -->
+                <h5>Ingredients</h5>
+                <ul class="list-group list-group-flush mb-4">
+                  <li
+                    class="list-group-item"
+                    *ngFor="let ingredient of recipe.ingredients"
+                  >
+                    {{ ingredient }}
+                  </li>
+                </ul>
+
+                <!-- Instructions -->
+                <h5>Instructions</h5>
+                <ol class="list-group list-group-numbered mb-4">
+                  <li
+                    class="list-group-item"
+                    *ngFor="let step of recipe.instructions"
+                  >
+                    {{ step }}
+                  </li>
+                </ol>
+
+                <!-- Tags -->
+                <div class="d-flex flex-wrap gap-2">
+                  <span
+                    class="badge bg-primary"
+                    *ngFor="let tag of recipe.tags"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    } @else {
+      <p>No recipe selected. Please click a button above.</p>
+    }
+  </div>
+</div>
