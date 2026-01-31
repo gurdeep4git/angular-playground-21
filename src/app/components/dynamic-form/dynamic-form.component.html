@@ -1,0 +1,31 @@
+@if (!!dynamicForm) {
+  <form [formGroup]="dynamicForm" class="col-4">
+    @for (f of fields; track f.key) {
+      <div class="form-group mb-2">
+        <label>{{ f.label }}</label>
+        @if (f.type === "text" || f.type === "email" || f.type === "date") {
+          <input
+            class="form-control"
+            [type]="f?.type"
+            [formControlName]="f.key"
+          />
+          @if (
+            dynamicForm.get(f.key)?.invalid && dynamicForm.get(f.key)?.touched
+          ) {
+            @for (error of getErrors(f); track error) {
+              <small class="text-danger">{{error}}</small>
+            }
+          }
+        }
+
+        @if (f.type === "select") {
+          <select class="form-control" [formControlName]="f.key">
+            @for (opt of f.options; track opt) {
+              <option [value]="opt.value">{{ opt.label }}</option>
+            }
+          </select>
+        }
+      </div>
+    }
+  </form>
+}

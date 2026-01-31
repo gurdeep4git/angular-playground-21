@@ -10,11 +10,6 @@ export const routes: Routes = [
     title: 'CVA',
   },
   {
-    path: 'custom',
-    component: CustomComponentComponent,
-    title: 'custom',
-  },
-  {
     path: 'ngTemplateOutlet',
     loadComponent: () =>
       import('./components/template-outlet/template-outlet.component').then(
@@ -96,5 +91,21 @@ export const routes: Routes = [
         (i) => i.RecepiesComponent
       ),
     title: 'Recepies',
+  },
+  {
+    path: 'dynamic-form',
+    loadComponent: () =>
+      import('./components/dynamic-form/dynamic-form.component').then(
+        (i) => i.DynamicFormComponent
+      ),
+    title: 'Dynamic Form',
+  },
+  {
+    path: 'custom-validation',
+    loadComponent: () =>
+      import('./components/custom-validators/custom-validators.component').then(
+        (i) => i.CustomValidatorsComponent
+      ),
+    title: 'custom-validation',
   },
 ];

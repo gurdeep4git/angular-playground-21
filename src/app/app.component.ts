@@ -27,6 +27,8 @@ export class AppComponent {
     { label: 'Invalid Field Directive', href: './reactive-forms' },
     { label: 'Quiz', href: './quiz' },
     { label: 'Recepies', href: './recepies' },
+    { label: 'Dynamic Form', href: './dynamic-form' },
+    { label: 'Custom Validtion', href: './custom-validation' },
   ];
 
   constructor(
