@@ -108,4 +108,12 @@ export const routes: Routes = [
       ),
     title: 'custom-validation',
   },
+  {
+    path: 'dynamic-component-load',
+    loadComponent: () =>
+      import('./components/dynamic-component-load/dynamic-component-load.component').then(
+        (i) => i.DynamicComponentLoadComponent
+      ),
+    title: 'dynamic-component-load',
+  },
 ];

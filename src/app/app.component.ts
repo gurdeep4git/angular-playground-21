@@ -29,6 +29,7 @@ export class AppComponent {
     { label: 'Recepies', href: './recepies' },
     { label: 'Dynamic Form', href: './dynamic-form' },
     { label: 'Custom Validtion', href: './custom-validation' },
+    { label: 'Dynamic Component Load', href: './dynamic-component-load' },
   ];
 
   constructor(
