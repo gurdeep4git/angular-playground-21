@@ -30,6 +30,7 @@ export class AppComponent {
     { label: 'Dynamic Form', href: './dynamic-form' },
     { label: 'Custom Validtion', href: './custom-validation' },
     { label: 'Dynamic Component Load', href: './dynamic-component-load' },
+    { label: 'Smart Home', href: './smart-home' },
   ];
 
   constructor(

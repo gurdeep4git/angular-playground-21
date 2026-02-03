@@ -1,0 +1,5 @@
+@let deviceStatus = device().status ? "ACTIVE" : "OFFLINE";
+<div class="card shadow-sm p-3 device-card mb-3" (click)="onDeviceClick(device().id)" [class.active]="device().status">
+  <h1 class="h5">{{ device().title }}</h1>
+  <span>Status: <span class="status" [class.active]="device().status">{{ deviceStatus }}</span></span>
+</div>

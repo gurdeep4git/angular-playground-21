@@ -116,4 +116,12 @@ export const routes: Routes = [
       ),
     title: 'dynamic-component-load',
   },
+  {
+    path: 'smart-home',
+    loadComponent: () =>
+      import('./components/smart-home/smart-home.component').then(
+        (i) => i.SmartHomeComponent
+      ),
+    title: 'Smart Home',
+  },
 ];

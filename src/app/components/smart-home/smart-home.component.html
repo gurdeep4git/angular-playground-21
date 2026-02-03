@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-4">
+    <app-stats>
+      <h1 class="h6 text-uppercase">System Load</h1>
+      <p class="m-0">
+        <b class="h3">{{ smartHomeService.totalLoad() }}</b> WATTS
+      </p>
+    </app-stats>
+  </div>
+  <div class="col-md-4">
+    <app-stats>
+      <h1 class="h6 text-uppercase">Active Nodes</h1>
+      <p class="m-0"><b class="h3">{{smartHomeService.activeDevicesCount()}}</b> DEVICES</p>
+    </app-stats>
+  </div>
+  <div class="col-md-4">
+    <app-stats>
+      <h1 class="h6 text-uppercase">Environment</h1>
+      <p class="m-0"><b class="h3">72</b> F</p>
+    </app-stats>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <h4 class="my-3">Zone Control</h4>
+    <div class="row">
+      @for (device of smartHomeService.devices(); track device.id) {
+        <div class="col-md-4">
+          <app-device [device]="device"></app-device>
+        </div>
+      }
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        @if (!smartHomeService.activateAll()) {
+          <button
+            (click)="onActivateAll()"
+            type="button"
+            class="btn btn-outline-secondary w-100"
+          >
+            Activate All
+          </button>
+        } @else {
+          <button
+            (click)="onEmergencyShutoff()"
+            type="button"
+            class="btn btn-outline-danger w-100"
+          >
+            Emergency shutoff
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+</div>

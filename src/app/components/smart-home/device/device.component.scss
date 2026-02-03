@@ -1,0 +1,27 @@
+.device-card {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  span {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  &.active {
+    border-color: green;
+    box-shadow: 0 0.125rem 0.25rem green !important;
+
+    .h5 {
+      text-shadow: 0 0 5px green;
+      color: green;
+    }
+
+    .status{
+        color: green;
+        font-weight: bold;
+    }
+  }
+}
