@@ -1,0 +1,14 @@
+<div class="accordion">
+  @for(accordion of accordions;track accordion; let i = $index) {
+    <div class="accordion-item" [class.active]="i === activeIndex">
+      <button class="accordion-header" (click)="activeIndex = i">
+        <span>{{accordion.header}}</span>
+        <span class="icon">+</span>
+      </button>
+      <div class="accordion-content">
+        <p>{{accordion.body}}</p>
+      </div>
+    </div>
+  }
+</div>
+    
